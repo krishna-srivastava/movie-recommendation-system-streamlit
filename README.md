@@ -150,9 +150,7 @@ TMDB_API_KEY = "your_api_key_here"
 
 ## 📸 Preview
 
-```markdown
-![App Screenshot](https://raw.githubusercontent.com/krishna-srivastava/movie-recommendation-system-streamlit/main/screenshot.png)
-```
+![App Screenshot](screenshot.png)
 
 ---
 
