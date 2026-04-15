@@ -176,7 +176,7 @@ Add your project screenshot here after deployment.
 Example:
 
 ```markdown
-![App Screenshot](screenshot.png)
+![App Screenshot](./screenshot.png)
 ```
 
 ---
