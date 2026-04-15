@@ -116,7 +116,7 @@ movie-recommendation-system-streamlit/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/movie-recommendation-system-streamlit.git
+git clone https://github.com/krishna-srivastava/movie-recommendation-system-streamlit.git
 cd movie-recommendation-system-streamlit
 ```
 
