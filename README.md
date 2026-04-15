@@ -2,80 +2,60 @@
 
 A **content-based movie recommendation system** built using **Python, Streamlit, and Machine Learning**.
 
-This project recommends similar movies based on **genre, director, and cast information** using **CountVectorizer** and **Cosine Similarity**.
-
-It also includes:
-
-* 🎥 Movie poster fetching using TMDB API
-* 🔍 Fuzzy movie title matching
-* 🕘 Recent search history
-* 📱 Clean Streamlit user interface
-
-⚠️ **Important:**
-This project uses the **IMDb Top 1000 Movies Dataset**, so recommendations are limited to these **1000 movies only**.
-
-It does **not include all movies from IMDb or the internet**.
+This application recommends similar movies based on **genre, director, and cast** using **CountVectorizer** and **Cosine Similarity**.
 
 ---
 
 ## 🚀 Features
 
-* Recommend top **9 similar movies**
-* Handle **misspelled movie names** using fuzzy matching
-* Display movie posters with TMDB API
-* Show recent searches in sidebar
-* Fast recommendations using cosine similarity
-* Clean and responsive Streamlit UI
+- 🎯 Recommend top **9 similar movies**
+- 🔍 Handle **misspelled movie names** using fuzzy matching
+- 🎥 Fetch and display **movie posters using TMDB API**
+- 🕘 Show **recent search history**
+- ⚡ Fast recommendations using cosine similarity
+- 📱 Clean and responsive **Streamlit UI**
+
+---
+
+## ⚠️ Important Note
+
+This project uses the **IMDb Top 1000 Movies Dataset**, so:
+
+- Recommendations are limited to **only these 1000 movies**
+- It does **NOT include all movies from IMDb or the internet**
 
 ---
 
 ## 📊 Dataset Information
 
-This project is based on the **IMDb Top 1000 Movies Dataset**.
+The dataset contains **top 1000 highest-rated movies from IMDb**.
 
-The dataset contains only the **top 1000 highest-rated/popular movies from IMDb**.
-
-Because of this, the system can recommend movies **only from these 1000 titles**.
-
-If a movie is not present in the dataset, it may not be found.
-
-### Dataset Columns Used
-
-* `Series_Title`
-* `Genre`
-* `Director`
-* `Star1`
-* `Star2`
-* `Star3`
+### Columns Used:
+- `Series_Title`
+- `Genre`
+- `Director`
+- `Star1`
+- `Star2`
+- `Star3`
 
 ---
 
 ## 🛠️ Tech Stack
 
-* **Python**
-* **Streamlit**
-* **Pandas**
-* **Scikit-learn**
-* **Requests**
-* **TMDB API**
+- **Python**
+- **Streamlit**
+- **Pandas**
+- **Scikit-learn**
+- **Requests**
+- **TMDB API**
 
 ---
 
 ## 🧠 How It Works
 
-This project uses a **content-based filtering approach**.
+### 1️⃣ Data Preprocessing
 
-### 1) Data Preprocessing
-
-Important movie features such as:
-
-* Genre
-* Director
-* Cast
-
-are combined into a single **tag column**.
-
-Example:
+Important features are combined into a single **tag column**:
 
 ```python
 tag = Genre + Director + Star1 + Star2 + Star3
@@ -83,45 +63,44 @@ tag = Genre + Director + Star1 + Star2 + Star3
 
 ---
 
-### 2) Text Vectorization
+### 2️⃣ Text Vectorization
 
-The text tags are converted into numerical vectors using:
+Text data is converted into numerical vectors:
 
 ```python
-CountVectorizer()
+from sklearn.feature_extraction.text import CountVectorizer
+
+cv = CountVectorizer()
+vectors = cv.fit_transform(tags)
 ```
 
 ---
 
-### 3) Similarity Matching
+### 3️⃣ Similarity Calculation
 
-Cosine similarity is used to compare movie vectors.
+Cosine similarity is used to find similar movies:
 
 ```python
-cosine_similarity(vectors)
-```
+from sklearn.metrics.pairwise import cosine_similarity
 
-Movies with the highest similarity score are recommended.
+similarity = cosine_similarity(vectors)
+```
 
 ---
 
-### 4) Fuzzy Search
+### 4️⃣ Fuzzy Search
 
-The app uses fuzzy matching to handle spelling mistakes.
+Handles incorrect spellings:
 
-Example:
-
-```text
+```
 avngers → avengers
 ```
-
-This improves user experience and search flexibility.
 
 ---
 
 ## 📂 Project Structure
 
-```text
+```
 movie-recommendation-system-streamlit/
 │
 ├── app.py
@@ -134,20 +113,24 @@ movie-recommendation-system-streamlit/
 
 ## ⚙️ Installation & Setup
 
-Clone the repository:
+### 1. Clone the repository
 
 ```bash
 git clone https://github.com/your-username/movie-recommendation-system-streamlit.git
 cd movie-recommendation-system-streamlit
 ```
 
-Install dependencies:
+---
+
+### 2. Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Run the app:
+---
+
+### 3. Run the application
 
 ```bash
 streamlit run app.py
@@ -157,23 +140,15 @@ streamlit run app.py
 
 ## 🔑 TMDB API Setup
 
-Get your API key from The Movie Database.
+Get your API key from TMDB and add:
 
-Store it securely using Streamlit secrets or environment variables.
-
-Example:
-
-```toml
+```python
 TMDB_API_KEY = "your_api_key_here"
 ```
 
 ---
 
 ## 📸 Preview
-
-Add your project screenshot here after deployment.
-
-Example:
 
 ```markdown
 ![App Screenshot](screenshot.png)
@@ -183,12 +158,12 @@ Example:
 
 ## 🎯 Future Improvements
 
-* Add movie overview / plot summary
-* Include IMDb ratings in recommendations
-* Add genre-based filtering
-* Improve recommendation accuracy
-* Deploy on Streamlit Cloud
-* Expand dataset beyond top 1000 movies
+- 📖 Add movie overview / plot
+- ⭐ Include IMDb ratings
+- 🎭 Genre-based filtering
+- 🤖 Improve recommendation accuracy
+- ☁️ Deploy on Streamlit Cloud
+- 📚 Expand dataset beyond top 1000 movies
 
 ---
 
