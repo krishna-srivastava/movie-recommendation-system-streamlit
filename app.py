@@ -11,14 +11,14 @@ TMDB_API_KEY = "enter your api key"
 def get_poster(movie_title):
     try:
         url = f"https://api.themoviedb.org/3/search/movie?api_key={TMDB_API_KEY}&query={movie_title}"
-        response = requests.get(url, timeout=5)  # 👈 timeout add kiya
+        response = requests.get(url, timeout=5)
         data = response.json()
         if "results" in data and data["results"]:
             poster_path = data["results"][0]["poster_path"]
             if poster_path:
                 return f"https://image.tmdb.org/t/p/w500{poster_path}"
     except Exception:
-        return None  # 👈 Error aaye toh None return karo, app crash nahi hogi
+        return None
     return None
 
 
@@ -56,7 +56,7 @@ def recommend(movie):
     if not close:
         return [], None
     
-    matched_title = close[0]  # Best match4
+    matched_title = close[0] 
     index = df[df["title_lower"] == matched_title].index[0]
     
     distances = similarity[index]
@@ -76,8 +76,8 @@ if st.button("Recommend"):
         st.error("Movie not found 😢")
     else:
         if matched not in st.session_state.search_history:
-            st.session_state.search_history.insert(0, matched)  # Latest pehle
-            st.session_state.search_history = st.session_state.search_history[:5]  # Sirf last 5
+            st.session_state.search_history.insert(0, matched)  
+            st.session_state.search_history = st.session_state.search_history[:5]  
 
         st.info(f"Showing results for: **{matched}**")
         st.success("Top Recommendations:")
